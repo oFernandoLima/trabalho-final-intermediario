@@ -1,9 +1,8 @@
 import { createContext, useContext, useState } from "react";
 
 const mockUsers = [
-  { email: "user1@example.com", name: "User One", password: "password123" },
-  { email: "user2@example.com", name: "User Two", password: "password456" },
-  { email: "user3@example.com", name: "User Three", password: "password789" },
+  { email: "nando@example.com", name: "Fernando Lima", password: "senha123" },
+  { email: "admin@example.com", name: "User Admin", password: "senha123" }
 ];
 
 export const AuthContext = createContext();
