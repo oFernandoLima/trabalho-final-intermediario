@@ -1,8 +1,6 @@
-import { createBrowserRouter } from "react-router-dom";
-import SignIn from "./SignIn";
-import Home from "./Home";
+import { createBrowserRouter } from "react-router-dom"
 import DashboardLayoutBasic from "../components/Layout"
-import { Products } from "./Products"
+import { Home, SignIn, Products } from "@pages"
 
 export const router = createBrowserRouter([
   {
