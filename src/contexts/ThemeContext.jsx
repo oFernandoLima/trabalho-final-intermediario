@@ -16,14 +16,14 @@ export const AppThemeProvider = ({ children }) => {
           sx={{
             display: "flex",
             flexDirection: "column",
-            alignItems: "center",
+            // alignItems: "center",
           }}
         >
           {children}
         </Box>
       </ThemeProvider>
     </ThemeContext.Provider>
-  );
+  )
 };
 
 export function useAppThemeContext() {
