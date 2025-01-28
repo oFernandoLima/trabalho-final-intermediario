@@ -13,6 +13,8 @@ import Tooltip from "@mui/material/Tooltip"
 import MenuItem from "@mui/material/MenuItem"
 import AdbIcon from "@mui/icons-material/Adb"
 
+import ImageLogo from "@assets/logo_avanti2.png"
+
 const pages = ["Início", "Produtos", "Fale conosco"]
 const settings = ["Profile", "Account", "Dashboard", "Logout"]
 
@@ -39,7 +41,6 @@ function Header() {
     <AppBar position="static" style={{ width: "100vw !important" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
           <Typography
             variant="h6"
             noWrap
@@ -55,7 +56,7 @@ function Header() {
               textDecoration: "none",
             }}
           >
-            LOGO
+            <img src={ImageLogo} alt="Logo avanti" height={50} />
           </Typography>
 
           <Box
@@ -97,7 +98,6 @@ function Header() {
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
           <Typography
             variant="h5"
             noWrap
@@ -114,8 +114,9 @@ function Header() {
               textDecoration: "none",
             }}
           >
-            LOGO
+            <img src={ImageLogo} alt="Logo avanti" height={45} />
           </Typography>
+
           <Box
             sx={{
               flexGrow: 1,

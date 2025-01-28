@@ -1,5 +1,6 @@
 import styles from "./styles.module.css"
 import AdbIcon from "@mui/icons-material/Adb"
+import ImageLogo from "@assets/logo_avanti1.png"
 
 export function Footer() {
   const pages = ["Início", "Produtos", "Fale conosco"]
@@ -14,7 +15,7 @@ export function Footer() {
   return (
     <footer className={styles["footer"]}>
       <section className={styles["section-footer"]}>
-        <AdbIcon sx={{ mr: 1 }} />
+        <img src={ImageLogo} alt="Logo Avanti" height={100} />
 
         <div className={styles["container-list-items"]}>
           <p>Empresa</p>
