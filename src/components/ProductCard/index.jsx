@@ -3,12 +3,9 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import CardActionArea from "@mui/material/CardActionArea";
-import ModeEditIcon from '@mui/icons-material/ModeEdit';
-import DeleteIcon from '@mui/icons-material/Delete';
-import { Button, CardActions } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
-function ProductCard({ product }) {
+export function ProductCard({ product }) {
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -24,8 +21,8 @@ function ProductCard({ product }) {
   };
 
   return (
-    <Card sx={{ width: "100%", maxWidth: 364, height: 374 }}>
-      <CardActionArea sx={{ height: 325 }} onClick={handleClick}>
+    <Card sx={{ width: "100%", maxWidth: 364 }}>
+      <CardActionArea>
         <CardMedia
           component="img"
           height="200"
@@ -51,18 +48,6 @@ function ProductCard({ product }) {
           </Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions>
-        <Button onClick={handleEdit} size="small" color="primary">
-          Editar
-          <ModeEditIcon color="primary" sx={{ ml: 1 }} />
-        </Button>
-        <Button onClick={handleDelete} size="small" color="error">
-          Deletar
-          <DeleteIcon color="error" sx={{ ml: 1 }} />
-        </Button>
-      </CardActions>
     </Card>
   );
 }
-
-export default ProductCard;
