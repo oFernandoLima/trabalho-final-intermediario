@@ -8,10 +8,10 @@ import {
   Alert,
   Typography,
 } from "@mui/material";
-import { useAuth } from "../contexts/AuthContext";
+import { useAuth } from "../../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 
-function SignIn() {
+export function SignIn() {
   const { login } = useAuth();
   const navigate = useNavigate();
 
@@ -81,5 +81,3 @@ function SignIn() {
     </Container>
   );
 }
-
-export default SignIn;
