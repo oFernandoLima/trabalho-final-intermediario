@@ -1,3 +1,3 @@
-export { default as Home } from "./Home"
-export { default as SignIn } from "./SignIn"
 export * from "./Products"
+export * from "./SignIn"
+export * from "./Home"

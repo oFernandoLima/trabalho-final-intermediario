@@ -1,8 +1,12 @@
-import { useAuth } from "../contexts/AuthContext";
+import { useAuth } from "../../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
-import { Button, Box, Typography, Container } from "@mui/material";
+import { Box, Divider } from "@mui/material";
 import { useEffect } from "react";
-import ProductCard from "../components/ProductCard";
+import { CarouselSection } from "../../components/CarouselSection";
+import { HeroSection } from "../../components/HeroSection";
+import { Header } from "../../components/Header";
+import { AboutUs } from "../../components/AboutUs";
+import { Footer } from "../../components/Footer";
 
 const mockProducts = [
   {
@@ -34,7 +38,7 @@ const mockProducts = [
   },
 ];
 
-function Home() {
+export function Home() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
 
@@ -44,47 +48,22 @@ function Home() {
     }
   }, [user, navigate]);
 
-  const handleLogout = () => {
-    logout();
-    navigate("/sign-in");
-  };
-
   if (!user) return null;
 
   return (
-    <Container
-      maxWidth="md"
+    <Box
       sx={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        height: "100vh",
-      }}
-    >
-      <Box textAlign="center">
-        <Typography color="black" variant="h4" gutterBottom>
-          Bem-vindo, {user.name}!
-        </Typography>
-        <Typography color="black" variant="body1" gutterBottom>
-          Você está logado com o email: {user.email}
-        </Typography>
-        <Box textAlign="initial" sx={{ display: "flex", gap: 2, padding: 2 }}>
-          {mockProducts.map((product, index) => (
-            <ProductCard key={index} product={product} />
-          ))}
-        </Box>
-        <Button
-          variant="contained"
-          color="primary"
-          sx={{ mt: 2 }}
-          onClick={handleLogout}
-        >
-          Logout
-        </Button>
+        backgroundColor: "primary",
+        color: "black",
+      }}>
+      <Box>
+        <Header />
+        <HeroSection />
+        <CarouselSection />
+        <Divider color="lightblue" sx={{ width: 1000, height: 1, marginBlock: 10, marginInline: "auto" }} />
+        <AboutUs />
+        <Footer />
       </Box>
-    </Container>
+    </Box>
   );
 }
-
-export default Home;
