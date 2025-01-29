@@ -1,12 +1,9 @@
-import { useAuth } from "../../contexts/AuthContext";
-import { useNavigate } from "react-router-dom";
-import { Box, Divider } from "@mui/material";
-import { useEffect } from "react";
-import { CarouselSection } from "../../components/CarouselSection";
-import { HeroSection } from "../../components/HeroSection";
-import { Header } from "../../components/Header";
-import { AboutUs } from "../../components/AboutUs";
-import { Footer } from "../../components/Footer";
+import { Box, Divider } from "@mui/material"
+import { CarouselSection } from "../../components/CarouselSection"
+import { HeroSection } from "../../components/HeroSection"
+import { Header } from "../../components/Header"
+import { AboutUs } from "../../components/AboutUs"
+import { Footer } from "../../components/Footer"
 
 const mockProducts = [
   {
@@ -36,34 +33,27 @@ const mockProducts = [
     brand: "Nike",
     imageUrl: "/dunk-low.avif",
   },
-];
+]
 
 export function Home() {
-  const { user, logout } = useAuth();
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (!user) {
-      navigate("/sign-in");
-    }
-  }, [user, navigate]);
-
-  if (!user) return null;
-
   return (
     <Box
       sx={{
         backgroundColor: "primary",
         color: "black",
-      }}>
+      }}
+    >
       <Box>
         <Header />
         <HeroSection />
         <CarouselSection />
-        <Divider color="lightblue" sx={{ width: 1000, height: 1, marginBlock: 10, marginInline: "auto" }} />
+        <Divider
+          color="lightblue"
+          sx={{ width: 1000, height: 1, marginBlock: 10, marginInline: "auto" }}
+        />
         <AboutUs />
         <Footer />
       </Box>
     </Box>
-  );
+  )
 }

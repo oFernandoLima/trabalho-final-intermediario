@@ -22,11 +22,12 @@ export function SignIn() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const result = login(email, password);
+   
     if (!result.success) {
-      setError(result.message);
+      setError(result.message)
     } else {
-      setError("");
-      navigate("/");
+      setError("")
+      navigate("/administrador")
     }
   };
 

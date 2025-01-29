@@ -13,17 +13,19 @@ export function AuthProvider({ children }) {
   const login = (email, password) => {
     const foundUser = mockUsers.find(
       (u) => u.email === email && u.password === password
-    );
+    )
     if (foundUser) {
-      setUser(foundUser);
-      return { success: true };
+      setUser(foundUser)
+      localStorage.setItem("App:user", "success")
+      return { success: true }
     }
-    return { success: false, message: "Invalid email or password." };
-  };
+    return { success: false, message: "Invalid email or password." }
+  }
 
   const logout = () => {
-    setUser(null);
-  };
+    setUser(null)
+    localStorage.removeItem("App:user")
+  }
 
   return (
     <AuthContext.Provider value={{ user, login, logout }}>

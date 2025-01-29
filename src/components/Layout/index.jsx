@@ -1,27 +1,11 @@
-import PropTypes from "prop-types"
-import Box from "@mui/material/Box"
-import Typography from "@mui/material/Typography"
 import { createTheme } from "@mui/material/styles"
 import { AppProvider } from "@toolpad/core/AppProvider"
 import { DashboardLayout } from "@toolpad/core/DashboardLayout"
 import { useDemoRouter } from "@toolpad/core/internal"
 import { Outlet, useNavigate } from "react-router-dom"
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"
-
-const NAVIGATION = [
-  {
-    kind: "header",
-    title: "Menu",
-  },
-  {
-    segment: "administrador/produtos",
-    title: "Produtos",
-    icon: <ShoppingCartIcon />,
-  },
-  //   {
-  //     kind: "divider",
-  //   },
-]
+import LogoutIcon from "@mui/icons-material/Logout"
+import { useAuth } from "../../contexts/AuthContext"
 
 const demoTheme = createTheme({
   cssVariables: {
@@ -39,29 +23,55 @@ const demoTheme = createTheme({
   },
 })
 
-function DemoPageContent({ pathname }) {
-  return (
-    <Box
-      sx={{
-        py: 4,
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        textAlign: "center",
-      }}
-    >
-      <Typography>Dashboard content for {pathname}</Typography>
-    </Box>
-  )
-}
-
-DemoPageContent.propTypes = {
-  pathname: PropTypes.string.isRequired,
-}
-
 function DashboardLayoutBasic() {
   const router = useDemoRouter("/administrador")
   const navigate = useNavigate()
+  const { logout } = useAuth()
+
+  const logoutAction = () => {
+    logout()
+  }
+
+  const NAVIGATION = [
+    {
+      kind: "header",
+      title: "Menu",
+    },
+    {
+      segment: "administrador/produtos",
+      title: "Produtos",
+      icon: <ShoppingCartIcon />,
+    },
+    {
+      kind: "divider",
+    },
+    {
+      segment: "sign-in",
+      title: "",
+      icon: <LogoutIcon />,
+      action: (
+        <button
+          type="button"
+          style={{
+            width: "100%",
+            height: "100%",
+            fontSize: "16px",
+            display: "flex",
+            justifyContent: "start",
+            alignItems: "center",
+            border: "none",
+            background: "transparent",
+            cursor: "pointer",
+          }}
+          onClick={() => {
+            logoutAction()
+          }}
+        >
+          Sair
+        </button>
+      ),
+    },
+  ]
 
   return (
     <AppProvider
