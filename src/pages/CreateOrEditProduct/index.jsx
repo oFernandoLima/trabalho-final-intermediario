@@ -46,14 +46,23 @@ export function CreateOrEditProduct() {
 
   const storedProducts = JSON.parse(localStorage.getItem("produtos")) || []
 
-  const handleChange = (e) => {
+  const convertToBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader()
+      reader.readAsDataURL(file)
+      reader.onload = () => resolve(reader.result)
+      reader.onerror = (error) => reject(error)
+    })
+  }
+
+  const handleChange = async (e) => {
     const { name, value } = e.target
     if (name === "image") {
       const file = e.target.files ? e.target.files[0] : null
 
       const imageData = {
         name: file.name,
-        urlImage: URL.createObjectURL(file),
+        urlImage: await convertToBase64(file),
       }
 
       setFormData((prevState) => ({
@@ -219,7 +228,7 @@ export function CreateOrEditProduct() {
         <FormControl fullWidth sx={{ mt: 2, ml: 2 }}>
           <InputLabel id="demo-simple-select-label">Categoria</InputLabel>
           <Select
-            disabled={id}
+            disabled={id.toString() !== null || undefined || "" || false}
             labelId="demo-simple-select-label"
             id="demo-simple-select"
             label="Categoria"

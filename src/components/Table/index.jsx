@@ -51,12 +51,12 @@ export default function BasicTable({
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row, rowIndex) => (
+          {rows?.map((row, rowIndex) => (
             <TableRow
               key={rowIndex}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
-              {headers.map((header) => {
+              {headers?.map((header) => {
                 if (header.field === "actions") {
                   return (
                     <TableCell key={header.field}>
@@ -80,7 +80,7 @@ export default function BasicTable({
                 }
 
                 return (
-                  <TableCell key={header.field} align="left">
+                  <TableCell key={header?.field} align="left">
                     {row[header.field]}
                   </TableCell>
                 )

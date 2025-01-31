@@ -3,31 +3,17 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import CardActionArea from "@mui/material/CardActionArea";
-import { useNavigate } from "react-router-dom";
+import ImageDefault from "@assets/sem_imagem.png"
 
 export function ProductCard({ product }) {
-  const navigate = useNavigate();
-
-  const handleClick = () => {
-    navigate(`/products/${product.id}`);
-  };
-
-  const handleEdit = () => {
-    navigate(`/products/${product.id}`);
-  };
-
-  const handleDelete = () => {
-    navigate(`/products/${product.id}`);
-  };
-
   return (
     <Card sx={{ width: "100%", maxWidth: 364 }}>
       <CardActionArea>
         <CardMedia
           component="img"
           height="200"
-          image={product.imageUrl}
-          alt={product.name}
+          image={product.image ? product.image.urlImage : ImageDefault}
+          alt={product.description}
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
@@ -37,17 +23,13 @@ export function ProductCard({ product }) {
             Valor: R$ {product.value}
           </Typography>
           <Typography variant="body2" sx={{ color: "text.secondary" }}>
-            Marca: {product.brand}
+            Categoria: {product.categorie}
           </Typography>
-          <Typography
-            noWrap
-            variant="body2"
-            sx={{ color: "text.secondary" }}
-          >
+          <Typography noWrap variant="body2" sx={{ color: "text.secondary" }}>
             {product.description}
           </Typography>
         </CardContent>
       </CardActionArea>
     </Card>
-  );
+  )
 }
