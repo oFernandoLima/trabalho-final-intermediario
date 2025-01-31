@@ -5,6 +5,7 @@ import { useDemoRouter } from "@toolpad/core/internal"
 import { Outlet, useNavigate } from "react-router-dom"
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"
 import LogoutIcon from "@mui/icons-material/Logout"
+import InventoryIcon from "@mui/icons-material/Inventory"
 import { useAuth } from "../../contexts/AuthContext"
 
 const demoTheme = createTheme({
@@ -38,9 +39,14 @@ function DashboardLayoutBasic() {
       title: "Menu",
     },
     {
-      segment: "administrador/produtos",
+      segment: "administrador",
       title: "Produtos",
       icon: <ShoppingCartIcon />,
+    },
+    {
+      segment: "administrador/estoque",
+      title: "Estoque",
+      icon: <InventoryIcon />,
     },
     {
       kind: "divider",
